@@ -1,0 +1,71 @@
+<form class="container">
+  <div class="form-group ">
+    <label for="formDescription"
+      ><b
+        >Click on any student from list below to auto-populate form fields</b
+      ></label
+    ><br />
+    <label for="exampleInputEmail1">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputName"
+      placeholder="Student Name"
+      [value]="name"
+      name="inputName"
+      [(ngModel)]="name"
+    />
+
+    <label for="exampleInputEmail1">Age</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputAge"
+      placeholder="Student Age"
+      [value]="age"
+      name="inputAge"
+      [(ngModel)]="age"
+    />
+
+    <label for="exampleInputEmail1">Department</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputDepartment"
+      placeholder="Department"
+      [value]="department"
+      name="inputDepartment"
+      [(ngModel)]="department"
+    />
+
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="exampleCheck1"
+      name="checkBox"
+      [(ngModel)]="showList"
+    />
+    <label class="form-check-label" for="exampleCheck1">
+      {{showList ? "UnCheck to hide students list": "Check to show students list"}}
+    </label>
+  </div>
+</form>
+
+<div *ngIf="showList">
+  <ul class="list-group" *ngFor="let student of students">
+    <li class="list-group-item" (click)="listItemClick($event, student)">
+      <label style="font-weight: bold">Name:</label>
+      <label>{{ student.name }}</label
+      ><br />
+      <label style="font-weight: bold">Age:</label>
+      <label>{{ student.age }}</label
+      ><br />
+      <label style="font-weight: bold">Gender:</label>
+      <label>{{ student.gender === "f" ? "Female" : "Male" }}</label
+      ><br />
+      <label style="font-weight: bold">Department:</label>
+      <label>{{ student.department }}</label
+      ><br />
+    </li>
+  </ul>
+</div>
