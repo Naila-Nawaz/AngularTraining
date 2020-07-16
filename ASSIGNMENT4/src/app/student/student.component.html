@@ -1,0 +1,48 @@
+<form [formGroup]="form" class="container">
+  <label>Name</label><br />
+  <input
+    id="name"
+    type="text"
+    placeholder="name"
+    formControlName="name"
+  /><br />
+  <div
+    *ngIf="
+      form.controls.name.invalid &&
+      (form.controls.name.dirty || form.controls.name.touched)
+    "
+  >
+    <span *ngIf="form.controls.name.errors?.required">Name is required.</span>
+  </div>
+  <br />
+  <label>Age</label><br />
+  <input type="number" placeholder="age" formControlName="age" /><br />
+  <div
+    *ngIf="
+      form.controls.age.invalid &&
+      (form.controls.age.dirty || form.controls.age.touched)
+    "
+  >
+    <span *ngIf="form.controls.age.errors?.required">Age is required.</span>
+    <span *ngIf="form.controls.age.errors?.min">Min age is 10.</span>
+  </div>
+  <br />
+  <input type="checkbox" formControlName="isActive" />
+  <label style="margin-left: 5px;"> Active</label><br />
+  <button (click)="submit()" [disabled]="form.invalid">Submit</button>
+</form>
+<br /><br />
+<div class="container" *ngIf="students.length > 0">
+  <table style="width:90%">
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Is Active</th>
+    </tr>
+    <tr *ngFor="let student of students">
+      <td>{{ student.name }}</td>
+      <td>{{ student.age }}</td>
+      <td>{{ student.isActive ? "Yes" : "No" }}</td>
+    </tr>
+  </table>
+</div>

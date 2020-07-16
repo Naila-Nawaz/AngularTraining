@@ -1,0 +1,15 @@
+#body {
+  margin-top: 2px;
+}
+
+#sideNav {
+  width: 100px;
+  float: left;
+  height: 500px;
+}
+
+#form {
+  width: 200px;
+  float: left;
+  height: 500px;
+}
